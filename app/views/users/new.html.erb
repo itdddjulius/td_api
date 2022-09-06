@@ -1,17 +1,26 @@
 <h1>Register</h1>
 
+<div style="width: 50%;">
 <%= form_for @user, url: {action: "create"}, html: {class: "new_user_form"} do |f| %>
 
+<div class="field form-group">
   <%= f.label :username %>:
-  <%= f.text_field :username %>
-<br>
-  <%= f.label :email %>:
-  <%= f.email_field :email %>
-<br>
+  <%= f.text_field :username, class: "form-control-sm", placeholder: "First Name", style: 'width: 80%;' %>
+  <br>
+</div>
 
+<div class="field form-group">
+  <%= f.label :email %>:
+  <%= f.email_field :email, class: "form-control-sm", placeholder: "Email", style: 'width: 80%;'  %>
+  <br>
+</div>
+
+<div class="field form-group">
   <%= f.label :password %>:
-  <%= f.password_field :password %>
-<br>
+  <%= f.password_field :password, class: "form-control-sm", placeholder: "Password", style: 'width: 80%;'  %>
+  <br>
+</div>
 
   <%= f.submit "Submit" %>
 <% end %>
+</div>
