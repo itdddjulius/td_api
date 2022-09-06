@@ -50,5 +50,6 @@ Treasure Data (TD) - Coding Challenge
 
 * Deployment instructions
 <br> rails s
+<br> N.B. Defauls User {email=fred.bloggs@home.com password=password}
 
 * ...
