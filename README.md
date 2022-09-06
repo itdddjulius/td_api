@@ -2,11 +2,11 @@
 
 Treasure Data (TD) - Coding Challenge
 
-** Ruby version
-Ruby 2.7.6
+* Ruby version
+** Ruby 2.7.6
 
-** System dependencies
-Postgresql database
+* System dependencies
+** Postgresql database
 
 * Configuration
 .env variable(s)
@@ -30,24 +30,24 @@ Postgresql database
 
 
 * Database creation
-Databases:
-td_recipes_development
-td_recipes_test
-td_recipes_production
+** Databases:
+*** td_recipes_development
+*** td_recipes_test
+*** td_recipes_production
 
-rails db:drop
-rails db:create
-rails db:migrate
+*** rails db:drop
+*** rails db:create
+*** rails db:migrate
 
 * Database initialization
-rails db:seed
+** rails db:seed
 
 * How to run the test suite
-rspec test
+** rspec test
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-rails s
+** rails s
 
 * ...
