@@ -1,0 +1,33 @@
+<% require_relative '../../../lib/form_builder.rb' %>
+
+<%= form_for [@recipe, @ingredient], html: { class: "ingredient_form" }, remote: @js  do |f| %>
+
+  <% if @errors %>
+    <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+<div id="ingredient-form">
+  <p>
+    <%= f.label :name, "Ingredient:" %>
+    <%= f.text_field :name %>
+  </p>
+
+    <%= f.fields_for :measurements do |measurement_form| %>
+        <% if @ingredient.unsaved? || measurement_form.from_recipe?(@recipe) %>
+          <%= measurement_form.label :amount, "Amount:" %>
+          <%= measurement_form.number_field :amount %>
+
+            <%= measurement_form.label :metric, "Metric:" %>
+            <%= measurement_form.select :metric, ['unit', 'cup', 'g', 'oz', 'tsp', 'tbsp'] %>
+
+          <%= measurement_form.hidden_field :recipe_id, value: @recipe.id %>
+        <% end %>
+
+    <% end %>
+    <%= f.submit "add" %>
+</div>
+<% end %>

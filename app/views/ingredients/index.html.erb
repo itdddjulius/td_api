@@ -1,0 +1,10 @@
+<h1><%= @recipe.name %></h1>
+
+<h2>Ingredients</h2>
+  <ul class="ingredients">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %> <%= find_metrics(ingredient, @recipe) %></li>
+    <% end %>
+  </ul>
+<h2>Instructions</h2>
+<%= @recipe.directions %>

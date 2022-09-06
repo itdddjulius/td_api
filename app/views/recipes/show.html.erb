@@ -1,0 +1,49 @@
+<h1><%= @recipe.name %></h1>
+
+<% if @user && !@rated %>
+  <%= render '/ratings/rating' %>
+<% elsif @avg_rating != 0 %>
+  <h2>Average Rating</h2>
+  <div class='avg-rating'>
+    <% @avg_rating.times do %>
+      <span class='rating-star'>★</span>
+    <% end %>
+  </div>
+<% else %>
+  <h2>Average Rating</h2> <%= "☆" * @avg_rating %>
+  Log-in and be the first to rate this recipe.
+<% end %>
+
+<h2>Difficulty Level(1-5):</h2>
+<p class="difficulty"> ~ <%= @recipe.difficulty %> ~ </p>
+
+<h2>Prep Time:</h2>
+<p class="time"> ~ <%= time_converter(@recipe.prep_time) %> ~ </p>
+
+<h2>Ingredients</h2>
+  <ul class="ingredients">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <%= ingredient.name %> <%= find_metrics(ingredient, @recipe) %>
+        <% if logged_in? && current_user.id == @recipe.creator_id %>
+          <%= link_to "Edit", edit_recipe_ingredient_path(@recipe, ingredient) %>
+          <%= link_to "Delete", recipe_ingredient_path(@recipe, ingredient), method: :delete %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+<% if logged_in? && current_user.id == @recipe.creator_id %>
+  <%= link_to "Add New Ingredient", new_recipe_ingredient_path(@recipe) %>
+<% end %>
+
+
+<h2>Instructions</h2>
+<%= @recipe.directions %>
+
+<% if logged_in? && current_user.id == @recipe.creator_id %>
+  <p>
+    <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+    <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
+  </p>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_for [@category, @recipe] do |f| %>
+
+  <% if @errors %>
+    <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label       :name %>
+    <%= f.text_field  :name %>
+  </p>
+
+  <p>
+    <%= f.label         :prep_time %>
+    <%= f.number_field  :prep_time %>
+  </p>
+
+  <p>
+    <%= f.label         :directions %>
+    <%= f.text_field    :directions %>
+  </p>
+
+  <p>
+    <%= f.label         :difficulty %>
+    1<%= f.range_field(:difficulty, in: 1..5) %>5
+  </p>
+
+  <p>
+    <%= f.submit "Next" %>
+  </p>
+
+<% end %>
