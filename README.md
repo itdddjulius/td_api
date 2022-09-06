@@ -2,10 +2,10 @@
 
 Treasure Data (TD) - Coding Challenge
 
-* Ruby version
+** Ruby version
 Ruby 2.7.6
 
-* System dependencies
+** System dependencies
 Postgresql database
 
 * Configuration
