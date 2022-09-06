@@ -35,6 +35,7 @@ Treasure Data (TD) - Coding Challenge
 <br> td_recipes_test
 <br> td_recipes_production
 
+<br> bundle install
 <br> rails db:drop
 <br> rails db:create
 <br> rails db:migrate

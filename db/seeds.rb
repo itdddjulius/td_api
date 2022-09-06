@@ -13,6 +13,17 @@ def User.digest(string)
 end
 
 # USERS
+1.times do
+  user = User.new(
+    username: 'fredbloggs',
+    email: 'fred.bloggs@home.com'
+  )
+  user.password_digest = Digest::SHA1.hexdigest('password')
+  #user.password_digest = User.digest('password')
+  #user.password_digest = "password"
+  user.save
+end
+
 5.times do
   user = User.new(
     username: Faker::Internet.user_name,
